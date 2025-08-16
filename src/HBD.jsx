@@ -17,12 +17,14 @@ import goImg from './assets/go.jpg';
 const codeNameMap = {
   abcdefg: "Khushaboo",
   xyz123: "Rohit",
-  qwerty: "Anjali"
+  qwerty: "Anjali",
+  gookitatti : "Pooji",
 };
 
 export default function BirthdaySlide() {
   const { code } = useParams();
-  const name = codeNameMap[code] || "Bestie";
+  const name = codeNameMap[code];
+
 
   const scrollDown = () => {
     window.scrollBy({
@@ -32,7 +34,12 @@ export default function BirthdaySlide() {
     });
   };
 
-  return (
+  return   (
+  <div>
+      {!name ? (
+        <p>Oops! Name not found 😢</p>
+      ) : (
+      <>
     <div style={{ 
       fontFamily: "'Dancing Script', cursive", 
       background: 'linear-gradient(135deg, #FFC0CB, #DDA0DD)', 
@@ -128,6 +135,9 @@ export default function BirthdaySlide() {
           }
         `}
       </style>
+    </div>
+    </>
+      )}
     </div>
   );
 }
