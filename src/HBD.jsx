@@ -1,143 +1,121 @@
-// BirthdaySlide.jsx
-import React from "react";
-import { useParams } from "react-router-dom";
+// BeautifulBirthdayGallery.jsx
+import React, { useEffect } from "react";
+import girlImg from "./assets/girl.jpg";
+import flowerImg from "./assets/flower.jpg";
+import cutieImg from "./assets/cutie.jpg";
+import parkImg from "./assets/park.jpg";
+import balloImg from "./assets/ballo.jpg";
+import hbgImg from "./assets/friend.jpg";
+import cutemsgImg from "./assets/story.jpg";
+import wisheImg from "./assets/sc.jpg";
+import goImg from "./assets/go.jpg";
+import confetti from "canvas-confetti";
 
-// Import all images
-import girlImg from './assets/girl.jpg';
-import flowerImg from './assets/flower.jpg';
-import cutieImg from './assets/cutie.jpg';
-import parkImg from './assets/park.jpg';
-import balloImg from './assets/ballo.jpg';
-import hbgImg from './assets/hbg.jpg';
-import cutemsgImg from './assets/cutemsg.jpg';
-import wisheImg from './assets/wishe.jpg';
-import goImg from './assets/go.jpg';
+export default function BeautifulBirthdayGallery({ name = "Bestie" }) {
+  const images = [
+    girlImg, flowerImg, cutieImg, parkImg, balloImg,
+    hbgImg, cutemsgImg, wisheImg, goImg
+  ];
 
-// Map codes → names
-const codeNameMap = {
-  abcdefg: "Khushaboo",
-  xyz123: "Rohit",
-  qwerty: "Anjali",
-  gookitatti : "Pooji",
-};
+  // 🎀 Upper jhalar/streamers + floating hearts
+  useEffect(() => {
+    // Jhalar
+    const jhalarContainer = document.createElement("div");
+    jhalarContainer.classList.add("jhalar-container");
+    document.body.appendChild(jhalarContainer);
+    for (let i = 0; i < 50; i++) {
+      const strip = document.createElement("div");
+      strip.classList.add("strip");
+      strip.style.left = Math.random() * 100 + "vw";
+      strip.style.animationDelay = Math.random() * 5 + "s";
+      strip.style.background = `hsl(${Math.random() * 360}, 80%, 70%)`;
+      jhalarContainer.appendChild(strip);
+    }
 
-export default function BirthdaySlide() {
-  const { code } = useParams();
-  const name = codeNameMap[code];
+    // Hearts
+    const heartsContainer = document.createElement("div");
+    heartsContainer.classList.add("hearts-container");
+    document.body.appendChild(heartsContainer);
+    const heartEmojis = ["💖","💗","💝","💞","🧿"];
+    const heartInterval = setInterval(() => {
+      const span = document.createElement("span");
+      span.innerText = heartEmojis[Math.floor(Math.random()*heartEmojis.length)];
+      span.style.position = "absolute";
+      span.style.left = Math.random() * 100 + "vw";
+      span.style.fontSize = 18 + Math.random() * 18 + "px";
+      span.style.animation = "floatUp 6s linear forwards";
+      heartsContainer.appendChild(span);
+      setTimeout(() => span.remove(), 6000);
+    }, 700);
 
+    return () => {
+      jhalarContainer.remove();
+      heartsContainer.remove();
+      clearInterval(heartInterval);
+    };
+  }, []);
 
-  const scrollDown = () => {
-    window.scrollBy({
-      top: window.innerHeight,
-      left: 0,
-      behavior: 'smooth'
-    });
-  };
+  // 🎉 Confetti
+  useEffect(() => {
+    confetti({ particleCount: 200, spread: 160, origin: { y: 0.6 } });
+  }, []);
 
-  return   (
-  <div>
-      {!name ? (
-        <p>Oops! Name not found 😢</p>
-      ) : (
-      <>
-    <div style={{ 
-      fontFamily: "'Dancing Script', cursive", 
-      background: 'linear-gradient(135deg, #FFC0CB, #DDA0DD)', 
-      minHeight: '100vh', 
-      color: '#fff', 
-      overflowX: 'hidden' 
-    }}>
-      
-      {/* Birthday Slide Header */}
-      <div className="slide-container" style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        background: 'rgba(255, 255, 255, 0.1)',
-        padding: '30px',
-        borderRadius: '20px',
-        boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
-        maxWidth: '900px',
-        margin: '50px auto'
-      }}>
-        <h1 style={{ fontSize: '3rem', marginBottom: '20px', animation: 'bounce 2s infinite' }}>
-          Happy Birthday {name}! 🎉
-        </h1>
-        <p style={{ fontSize: '1.2rem', marginBottom: '10px' }}>
-          May your day be filled with joy, love, and laughter!
-        </p>
-        <p style={{ fontSize: '1.2rem' }}>Have an amazing year ahead!</p>
-        <img 
-          src={girlImg} 
-          alt="Birthday" 
-          style={{
-            width: '200px',
-            height: 'auto',
-            transition: 'transform 3s ease',
-            borderRadius: '15px',
-            cursor: 'pointer',
-            marginTop: '20px'
-          }}
-        />
-      </div>
+  return (
+    <div className="birthday-page">
+      <header className="header">
+        <h1 className="glow-title">🎉 Happy Birthday {name}! 🎉</h1>
+        <p className="short-message">Wishing you joy, love & laughter 💝</p>
+      </header>
 
-      {/* Scroll Button */}
-      <button 
-        onClick={scrollDown} 
-        style={{
-          position: 'fixed',
-          bottom: '30px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          padding: '12px 25px',
-          fontSize: '16px',
-          border: 'none',
-          borderRadius: '25px',
-          backgroundColor: '#FF69B4',
-          color: '#fff',
-          cursor: 'pointer',
-          zIndex: 1000,
-          transition: 'background-color 0.3s, transform 0.3s'
-        }}
-        onMouseOver={e => e.currentTarget.style.backgroundColor = '#DDA0DD'}
-        onMouseOut={e => e.currentTarget.style.backgroundColor = '#FF69B4'}
-      >
-        Scroll Down ⬇
-      </button>
-
-      {/* "Our Best Memories" Section */}
-      <div className="text-center" style={{ fontFamily: "'Pacifico', cursive", fontSize: '3rem', marginTop: '50px', marginBottom: '30px' }}>
-        Our Best Memories
-      </div>
-
-      {/* First Row of Images */}
-      <div className="images" style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '20px', padding: '8px' }}>
-        {[flowerImg, cutieImg, parkImg, balloImg].map((img, i) => (
-          <img key={i} src={img} alt="bday" style={{ width: '200px', border: '15px solid white', borderRadius: '15px' }} />
+      <div className="gallery">
+        {images.map((img, i) => (
+          <div key={i} className="image-card" style={{ animationDelay:`${i*0.15}s` }}>
+            <img src={img} alt="birthday" className="gallery-img" />
+          </div>
         ))}
       </div>
 
-      {/* Second Row of Images */}
-      <div className="images" style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '20px', padding: '8px', marginBottom: '50px' }}>
-        {[hbgImg, cutemsgImg, wisheImg, goImg].map((img, i) => (
-          <img key={i} src={img} alt="bday" style={{ width: '200px', border: '15px solid white', borderRadius: '15px' }} />
-        ))}
-      </div>
+      <footer className="footer">Made with ❤️ by Khushaboo</footer>
 
-      {/* Curly Fonts Import & Bounce Animation */}
-      <style>
-        {`
-          @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Pacifico&display=swap');
+      <style>{`
+        body { margin:0; font-family:'Dancing Script', cursive;
+          background: linear-gradient(-45deg,#ffb6c1,#dda0dd,#87ceeb,#b5fffc);
+          background-size:400% 400%; animation: gradientShift 12s ease infinite; color:white; }
 
-          @keyframes bounce {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-          }
-        `}
-      </style>
-    </div>
-    </>
-      )}
+        @keyframes gradientShift {0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+        /* Header */
+        .header { padding:40px 20px; text-align:center; z-index:2; position:relative; }
+        .glow-title { font-size:3rem; text-shadow:0 0 10px #ff69b4,0 0 20px #ff69b4,0 0 30px #dda0dd,0 0 40px #ffa07a; animation: neonGlow 2s infinite alternate; }
+        .short-message { font-size:1.5rem; margin-top:10px; color:#fff; text-shadow:0 0 8px #fff; }
+
+        @keyframes neonGlow {from {text-shadow:0 0 10px #ff69b4,0 0 20px #ff69b4,0 0 30px #dda0dd,0 0 40px #ffa07a} to{text-shadow:0 0 20px #fff,0 0 40px #ffb6c1,0 0 60px #dda0dd,0 0 80px #ff69b4}}
+
+        /* Jhalar / Streamers */
+        .jhalar-container { position:absolute; top:0; left:0; width:100%; height:220px; pointer-events:none; overflow:hidden; z-index:1; }
+        .strip { position:absolute; top:-50px; width:5px; height:100px; border-radius:3px; animation: swing 3s infinite ease-in-out; }
+        @keyframes swing {0%{transform:rotate(0deg)}25%{transform:rotate(10deg)}50%{transform:rotate(0deg)}75%{transform:rotate(-10deg)}100%{transform:rotate(0deg)}}
+
+        /* Floating hearts */
+        .hearts-container span { display:block; position:absolute; bottom:-50px; animation: floatUp 6s linear forwards; }
+        @keyframes floatUp {0%{transform:translateY(0) rotate(0deg); opacity:1}100%{transform:translateY(-250px) rotate(360deg); opacity:0}}
+
+        /* Gallery */
+        .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; width:90%; margin:20px auto 40px auto; z-index:2; position:relative; }
+        .image-card { position:relative; overflow:hidden; border-radius:20px; border:3px solid transparent; opacity:0; transform:translateY(30px); animation: fadeIn 0.8s ease forwards; }
+        .gallery-img { width:100%; height:180px; object-fit:cover; border-radius:20px; transition: transform 0.5s ease, filter 0.4s ease, box-shadow 0.4s ease; }
+        .image-card:hover .gallery-img { transform:scale(1.1) rotate(1deg); filter:brightness(1.2) saturate(1.3); box-shadow:0 0 25px #ff69b4,0 0 50px #ff69b4,0 0 75px #dda0dd,0 0 100px #ffb6c1; }
+        .image-card:hover { border-color:#ff69b4; box-shadow:0 0 25px #ff69b4,0 0 50px #dda0dd; }
+
+        @keyframes fadeIn {from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+        /* Footer */
+        .footer { text-align:center; margin:40px 0; font-size:1.2rem; color:#fff; text-shadow:0 0 6px #ff69b4; }
+
+        /* Responsive */
+        @media (max-width:768px) { .glow-title{font-size:2.2rem;} .short-message{font-size:1.2rem;} .gallery-img{height:150px;} }
+        @media (max-width:480px) { .glow-title{font-size:1.6rem;} .short-message{font-size:1rem;} .gallery-img{height:120px;} }
+      `}</style>
     </div>
   );
 }
