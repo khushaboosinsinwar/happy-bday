@@ -1,17 +1,17 @@
 // BeautifulBirthdayGallery.jsx
 import React, { useEffect } from "react";
-import girlImg from "./assets/girl.jpg";
-import flowerImg from "./assets/flower.jpg";
+import girlImg from "./assets/cute.jpg";
+import flowerImg from "./assets/cute.jpg";
 import cutieImg from "./assets/cutie.jpg";
-import parkImg from "./assets/park.jpg";
-import balloImg from "./assets/ballo.jpg";
-import hbgImg from "./assets/friend.jpg";
-import cutemsgImg from "./assets/story.jpg";
-import wisheImg from "./assets/sc.jpg";
-import goImg from "./assets/go.jpg";
+import parkImg from "./assets/cute.jpg";
+import balloImg from "./assets/cutie.jpg";
+import hbgImg from "./assets/cutie.jpg";
+import cutemsgImg from "./assets/cutie.jpg";
+import wisheImg from "./assets/cutie.jpg";
+import goImg from "./assets/cutie.jpg";
 import confetti from "canvas-confetti";
 
-export default function BeautifulBirthdayGallery({ name = "Bestie" }) {
+export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
   const images = [
     girlImg, flowerImg, cutieImg, parkImg, balloImg,
     hbgImg, cutemsgImg, wisheImg, goImg
@@ -67,6 +67,7 @@ export default function BeautifulBirthdayGallery({ name = "Bestie" }) {
         <p className="short-message">Wishing you joy, love & laughter 💝</p>
       </header>
 
+      {/* ✅ 3-column Gallery */}
       <div className="gallery">
         {images.map((img, i) => (
           <div key={i} className="image-card" style={{ animationDelay:`${i*0.15}s` }}>
@@ -75,7 +76,13 @@ export default function BeautifulBirthdayGallery({ name = "Bestie" }) {
         ))}
       </div>
 
-      <footer className="footer">Made with ❤️ by Khushaboo</footer>
+
+
+
+
+
+
+      <footer className="footer">🌸 Made with ❤️ just for you Ma’am 🌸</footer>
 
       <style>{`
         body { margin:0; font-family:'Dancing Script', cursive;
@@ -100,10 +107,19 @@ export default function BeautifulBirthdayGallery({ name = "Bestie" }) {
         .hearts-container span { display:block; position:absolute; bottom:-50px; animation: floatUp 6s linear forwards; }
         @keyframes floatUp {0%{transform:translateY(0) rotate(0deg); opacity:1}100%{transform:translateY(-250px) rotate(360deg); opacity:0}}
 
-        /* Gallery */
-        .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; width:90%; margin:20px auto 40px auto; z-index:2; position:relative; }
+        /* ✅ Fixed 3-column Gallery */
+        .gallery { 
+          display:grid; 
+          grid-template-columns: repeat(3, 1fr); 
+          gap:15px; 
+          width:90%; 
+          margin:20px auto 40px auto; 
+          z-index:2; 
+          position:relative; 
+        }
+
         .image-card { position:relative; overflow:hidden; border-radius:20px; border:3px solid transparent; opacity:0; transform:translateY(30px); animation: fadeIn 0.8s ease forwards; }
-        .gallery-img { width:100%; height:180px; object-fit:cover; border-radius:20px; transition: transform 0.5s ease, filter 0.4s ease, box-shadow 0.4s ease; }
+        .gallery-img { width:100%; height:200px; object-fit:cover; border-radius:20px; transition: transform 0.5s ease, filter 0.4s ease, box-shadow 0.4s ease; }
         .image-card:hover .gallery-img { transform:scale(1.1) rotate(1deg); filter:brightness(1.2) saturate(1.3); box-shadow:0 0 25px #ff69b4,0 0 50px #ff69b4,0 0 75px #dda0dd,0 0 100px #ffb6c1; }
         .image-card:hover { border-color:#ff69b4; box-shadow:0 0 25px #ff69b4,0 0 50px #dda0dd; }
 
@@ -112,9 +128,46 @@ export default function BeautifulBirthdayGallery({ name = "Bestie" }) {
         /* Footer */
         .footer { text-align:center; margin:40px 0; font-size:1.2rem; color:#fff; text-shadow:0 0 6px #ff69b4; }
 
-        /* Responsive */
-        @media (max-width:768px) { .glow-title{font-size:2.2rem;} .short-message{font-size:1.2rem;} .gallery-img{height:150px;} }
-        @media (max-width:480px) { .glow-title{font-size:1.6rem;} .short-message{font-size:1rem;} .gallery-img{height:120px;} }
+        /* Responsive tweaks */
+        @media (max-width:768px) { 
+          .gallery { grid-template-columns: repeat(2, 1fr); }
+          .glow-title{font-size:2.2rem;} 
+          .short-message{font-size:1.2rem;} 
+          .gallery-img{height:160px;} 
+        }
+        @media (max-width:480px) { 
+          .gallery { grid-template-columns: 1fr; }
+          .glow-title{font-size:1.6rem;} 
+          .short-message{font-size:1rem;} 
+          .gallery-img{height:130px;} 
+        }
+          .photo-swap-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px; /* space between photos */
+  flex-wrap: wrap;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 1000px;
+}
+
+.swap-img {
+  width: 30%; /* 3 photos in a row */
+  height: auto;
+  border-radius: 15px;
+  object-fit: cover;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .swap-img { width: 45%; } /* 2 per row on tablet */
+}
+@media (max-width: 480px) {
+  .swap-img { width: 90%; } /* 1 per row on mobile */
+}
+
       `}</style>
     </div>
   );
