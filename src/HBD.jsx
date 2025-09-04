@@ -119,7 +119,7 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
         }
 
         .image-card { position:relative; overflow:hidden; border-radius:20px; border:3px solid transparent; opacity:0; transform:translateY(30px); animation: fadeIn 0.8s ease forwards; }
-        .gallery-img { width:100%; height:200px; object-fit:cover; border-radius:20px; transition: transform 0.5s ease, filter 0.4s ease, box-shadow 0.4s ease; }
+        .gallery-img { width:100%; height:250px; object-fit:cover; border-radius:20px; transition: transform 0.5s ease, filter 0.4s ease, box-shadow 0.4s ease; }
         .image-card:hover .gallery-img { transform:scale(1.1) rotate(1deg); filter:brightness(1.2) saturate(1.3); box-shadow:0 0 25px #ff69b4,0 0 50px #ff69b4,0 0 75px #dda0dd,0 0 100px #ffb6c1; }
         .image-card:hover { border-color:#ff69b4; box-shadow:0 0 25px #ff69b4,0 0 50px #dda0dd; }
 
