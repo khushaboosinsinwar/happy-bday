@@ -30,12 +30,12 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
     goImg,
   ];
 
-  // 🎀 Upper jhalar/streamers + floating hearts
+  // 🎀 Jhalar + floating hearts
   useEffect(() => {
-    // Jhalar
     const jhalarContainer = document.createElement("div");
     jhalarContainer.classList.add("jhalar-container");
     document.body.appendChild(jhalarContainer);
+
     for (let i = 0; i < 50; i++) {
       const strip = document.createElement("div");
       strip.classList.add("strip");
@@ -45,14 +45,14 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
       jhalarContainer.appendChild(strip);
     }
 
-    // Hearts
     const heartsContainer = document.createElement("div");
     heartsContainer.classList.add("hearts-container");
     document.body.appendChild(heartsContainer);
     const heartEmojis = ["💖", "💗", "💝", "💞", "🧿"];
     const heartInterval = setInterval(() => {
       const span = document.createElement("span");
-      span.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+      span.innerText =
+        heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
       span.style.position = "absolute";
       span.style.left = Math.random() * 100 + "vw";
       span.style.fontSize = 18 + Math.random() * 18 + "px";
@@ -80,7 +80,7 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
         <p className="short-message">Wishing you joy, love & laughter 💝</p>
       </header>
 
-      {/* ✅ 3-column Gallery */}
+      {/* ✅ 2-column Gallery */}
       <div className="gallery">
         {images.map((img, i) => (
           <div
@@ -114,19 +114,15 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
         /* Header */
         .header { padding:40px 20px; text-align:center; z-index:2; position:relative; }
         .glow-title {
-          font-size:3rem;
-          text-shadow:0 0 10px #ff69b4,0 0 20px #ff69b4,0 0 30px #dda0dd,0 0 40px #ffa07a;
+          font-size:5rem; /* ⬅️ bada size */
+          text-shadow:0 0 20px #ff69b4,0 0 40px #ff69b4,0 0 60px #dda0dd,0 0 80px #ffa07a;
           animation: neonGlow 2s infinite alternate;
         }
-        .short-message { font-size:1.5rem; margin-top:10px; color:#fff; text-shadow:0 0 8px #fff; }
+        .short-message { font-size:1.8rem; margin-top:10px; color:#fff; text-shadow:0 0 8px #fff; }
 
         @keyframes neonGlow {
-          from {
-            text-shadow:0 0 10px #ff69b4,0 0 20px #ff69b4,0 0 30px #dda0dd,0 0 40px #ffa07a
-          }
-          to {
-            text-shadow:0 0 20px #fff,0 0 40px #ffb6c1,0 0 60px #dda0dd,0 0 80px #ff69b4
-          }
+          from { text-shadow:0 0 20px #ff69b4,0 0 40px #ff69b4,0 0 60px #dda0dd,0 0 80px #ffa07a }
+          to { text-shadow:0 0 30px #fff,0 0 60px #ffb6c1,0 0 90px #dda0dd,0 0 120px #ff69b4 }
         }
 
         /* Jhalar / Streamers */
@@ -141,59 +137,43 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
           100% { transform:translateY(-250px) rotate(360deg); opacity:0 }
         }
 
-        /* ✅ Fixed 3-column Gallery */
-       /* ✅ Default Gallery (Desktop & Tablet) */
-.gallery { 
-  display: grid; 
-  grid-template-columns: repeat(2, 1fr);  /* ⬅️ Always 2 columns */
-  gap: 15px; 
-  width: 95%; 
-  margin: 20px auto; 
-  z-index: 2; 
-  position: relative; 
-}
-
-.gallery-img {
-  width: 100%;
-  height: 500px;   /* ⬅️ Adjust as you like */
-  object-fit: cover;
-  border-radius: 15px;
-  transition: transform 0.5s ease, filter 0.4s ease, box-shadow 0.4s ease;
-}
-  
-
-/* ✅ Mobile bhi 2 columns */
-@media (max-width:480px) { 
-  .gallery { grid-template-columns: repeat(2, 1fr); }  
-  .gallery-img { height: 300px; } /* ⬅️ Smaller height for mobile */
-}
+        /* ✅ Always 2-column Gallery */
+        .gallery { 
+          display:grid; 
+          grid-template-columns: repeat(2, 1fr);  
+          gap: 10px; 
+          width: 95%; 
+          margin: 20px auto; 
+          z-index: 2; 
+          position: relative; 
+        }
 
         .image-card {
           position:relative;
           overflow:hidden;
-          border-radius:20px;
-          border:3px solid transparent;
+          border-radius:12px;
+          border:2px solid transparent;
           opacity:0;
           transform:translateY(30px);
           animation: fadeIn 0.8s ease forwards;
         }
 
-       .gallery-img {
-  width: 100%;
-  height: 900px;   /* ⬅️ Super tall on desktop */
-  object-fit: cover;
-  border-radius: 20px;
-  transition: transform 0.5s ease, filter 0.4s ease, box-shadow 0.4s ease;
-}
-
-
+        .gallery-img {
+          width: 100%;
+          height: 350px;   /* ⬅️ thoda small */
+          object-fit: contain;  /* full photo visible */
+          border-radius: 12px;
+          background: #fff;
+          padding: 5px;
+          transition: transform 0.4s ease, filter 0.3s ease, box-shadow 0.3s ease;
+        }
 
         .image-card:hover .gallery-img {
-          transform:scale(1.1) rotate(1deg);
-          filter:brightness(1.2) saturate(1.3);
-          box-shadow:0 0 25px #ff69b4,0 0 50px #ff69b4,0 0 75px #dda0dd,0 0 100px #ffb6c1;
+          transform:scale(1.05);
+          filter:brightness(1.1) saturate(1.2);
+          box-shadow:0 0 15px #ff69b4,0 0 25px #dda0dd;
         }
-        .image-card:hover { border-color:#ff69b4; box-shadow:0 0 25px #ff69b4,0 0 50px #dda0dd; }
+        .image-card:hover { border-color:#ff69b4; }
 
         @keyframes fadeIn {
           from {opacity:0; transform:translateY(30px)}
@@ -204,23 +184,23 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
         .footer {
           text-align:center;
           margin:40px 0;
-          font-size:1.2rem;
+          font-size:1.4rem;
           color:#fff;
           text-shadow:0 0 6px #ff69b4;
         }
 
-        /* Responsive tweaks */
-        @media (max-width:768px) { 
-          .gallery { grid-template-columns: repeat(2, 1fr); }
-          .glow-title { font-size:2.2rem; } 
-          .short-message { font-size:1.2rem; } 
-          .gallery-img { height: 700px; }  /* ⬅️ Tall on tablet */
+        /* ✅ Mobile adjustments */
+        @media (max-width:768px) {
+          .glow-title { font-size:3.5rem; } /* Tablet */
+          .short-message { font-size:1.4rem; }
+          .gallery-img { height: 280px; }
         }
+
         @media (max-width:480px) { 
-          .gallery { grid-template-columns: 1fr; }
-          .glow-title { font-size:1.6rem; } 
-          .short-message { font-size:1rem; } 
-           .gallery-img { height: 500px; }  /* ⬅️ Tall on mobile */
+          .glow-title { font-size:2.5rem; } /* Mobile */
+          .short-message { font-size:1.2rem; }
+          .gallery { grid-template-columns: repeat(2, 1fr); }
+          .gallery-img { height: 220px; } 
         }
       `}</style>
     </div>
