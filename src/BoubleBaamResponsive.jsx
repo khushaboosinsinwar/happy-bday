@@ -130,13 +130,21 @@ export default function DoubleBaamResponsivePage() {
           padding: 0 5vw;
         }
 
-        .title {
-          font-size: clamp(2rem, 6vw, 4rem);
-          font-family: 'Great Vibes', cursive;
-          text-shadow: 0 0 15px #ff69b4, 0 0 30px #ffd700, 0 0 45px #00ffff;
-          animation: glowPulse 2s infinite alternate;
-          line-height: 1.2;
-        }
+   .title {
+  font-size: clamp(3rem, 8vw, 6rem); /* Responsive bada size */
+  font-weight: 900;  /* Super bold */
+  font-style: italic; /* ⬅️ Italic */
+  color: #ffffff;  /* ⬅️ White text */
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 3px;
+  white-space: nowrap;
+  text-shadow: 0 0 20px #ff69b4,
+               0 0 35px #00ffff,
+               0 0 50px #ffd700;
+  line-height: 1.2;
+}
+
+
         @keyframes glowPulse {
           from { text-shadow: 0 0 15px #ff69b4, 0 0 30px #ffd700; }
           to { text-shadow: 0 0 25px #00ffff, 0 0 45px #ff4500; }
