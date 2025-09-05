@@ -164,7 +164,7 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
 
         .gallery-img {
           width:100%;
-          height:450px;   /* ⬅️ Increased image height */
+          height:550px;   /* ⬅️ Increased image height */
           object-fit:cover;
           border-radius:20px;
           transition: transform 0.5s ease, filter 0.4s ease, box-shadow 0.4s ease;
