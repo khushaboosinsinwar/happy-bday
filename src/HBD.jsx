@@ -162,13 +162,15 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
           animation: fadeIn 0.8s ease forwards;
         }
 
-        .gallery-img {
-          width:100%;
-          height:650px;   /* ⬅️ Increased image height */
-          object-fit:cover;
-          border-radius:20px;
-          transition: transform 0.5s ease, filter 0.4s ease, box-shadow 0.4s ease;
-        }
+       .gallery-img {
+  width: 100%;
+  height: 900px;   /* ⬅️ Super tall on desktop */
+  object-fit: cover;
+  border-radius: 20px;
+  transition: transform 0.5s ease, filter 0.4s ease, box-shadow 0.4s ease;
+}
+
+
 
         .image-card:hover .gallery-img {
           transform:scale(1.1) rotate(1deg);
@@ -196,13 +198,13 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
           .gallery { grid-template-columns: repeat(2, 1fr); }
           .glow-title { font-size:2.2rem; } 
           .short-message { font-size:1.2rem; } 
-          .gallery-img { height:300px; }  /* ⬅️ Tablet image height */
+          .gallery-img { height: 700px; }  /* ⬅️ Tall on tablet */
         }
         @media (max-width:480px) { 
           .gallery { grid-template-columns: 1fr; }
           .glow-title { font-size:1.6rem; } 
           .short-message { font-size:1rem; } 
-          .gallery-img { height:250px; }  /* ⬅️ Mobile image height */
+           .gallery-img { height: 500px; }  /* ⬅️ Tall on mobile */
         }
       `}</style>
     </div>
