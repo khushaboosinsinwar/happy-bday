@@ -142,15 +142,31 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
         }
 
         /* ✅ Fixed 3-column Gallery */
-        .gallery { 
-          display:grid; 
-          grid-template-columns: repeat(3, 1fr); 
-          gap:15px; 
-          width:90%; 
-          margin:20px auto 40px auto; 
-          z-index:2; 
-          position:relative; 
-        }
+       /* ✅ Default Gallery (Desktop & Tablet) */
+.gallery { 
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr);  /* ⬅️ Always 2 columns */
+  gap: 15px; 
+  width: 95%; 
+  margin: 20px auto; 
+  z-index: 2; 
+  position: relative; 
+}
+
+.gallery-img {
+  width: 100%;
+  height: 500px;   /* ⬅️ Adjust as you like */
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.5s ease, filter 0.4s ease, box-shadow 0.4s ease;
+}
+  
+
+/* ✅ Mobile bhi 2 columns */
+@media (max-width:480px) { 
+  .gallery { grid-template-columns: repeat(2, 1fr); }  
+  .gallery-img { height: 300px; } /* ⬅️ Smaller height for mobile */
+}
 
         .image-card {
           position:relative;
