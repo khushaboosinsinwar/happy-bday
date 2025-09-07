@@ -1,6 +1,6 @@
-// BeautifulBirthdayGallery.jsx
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// App.jsx
+import React, { useState } from "react";
+
 import girlImg from "./assets/saree.jpg";
 import selfImg from "./assets/self.jpg";
 import flowerImg from "./assets/coal.jpg";
@@ -13,106 +13,101 @@ import hbgImg from "./assets/hath.jpg";
 import cutemsgImg from "./assets/crose.jpg";
 import wisheImg from "./assets/bhoot.jpg";
 import goImg from "./assets/ujjain.jpg";
-import confetti from "canvas-confetti";
+import { useNavigate } from "react-router-dom";
 
-export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
+
+export default function App() {
   const navigate = useNavigate();
 
+  const [selected, setSelected] = useState(null);
+
   const images = [
-    jhumkaImg,
-    selfImg,
-    cutemsgImg,
-    flowerImg,
-    cutieImg,
-    parkImg,
-    wisheImg,
-    roseImg,
-    balloImg,
-    hbgImg,
-    girlImg,
-    goImg,
+    { src: girlImg, title: "Saree Style" },
+    { src: selfImg, title: "Selfie Vibes" },
+    { src: flowerImg, title: "Coal Flower" },
+    { src: cutieImg, title: "Cute Memory" },
+    { src: parkImg, title: "Suit Outfit" },
+    { src: roseImg, title: "Red Rose" },
+    { src: jhumkaImg, title: "Golden Jhumka" },
+    { src: balloImg, title: "Pop Party" },
+    { src: hbgImg, title: "Hand Pose" },
+    { src: cutemsgImg, title: "Cross Flower" },
+    { src: wisheImg, title: "Bhoot Fun" },
+    { src: goImg, title: "Trip to Ujjain" },
   ];
 
-  // 🎀 Jhalar & hearts
-  useEffect(() => {
-    const jhalarContainer = document.createElement("div");
-    jhalarContainer.classList.add("jhalar-container");
-    document.body.appendChild(jhalarContainer);
-    for (let i = 0; i < 100; i++) {
-      const strip = document.createElement("div");
-      strip.classList.add("strip");
-      strip.style.left = Math.random() * 100 + "vw";
-      strip.style.animationDelay = Math.random() * 5 + "s";
-      strip.style.background = `hsl(${Math.random() * 360}, 80%, 70%)`;
-      jhalarContainer.appendChild(strip);
-    }
-
-    const heartsContainer = document.createElement("div");
-    heartsContainer.classList.add("hearts-container");
-    document.body.appendChild(heartsContainer);
-    const heartEmojis = ["💖", "💗", "💝", "💞", "🧿"];
-    const heartInterval = setInterval(() => {
-      const span = document.createElement("span");
-      span.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
-      span.style.position = "absolute";
-      span.style.left = Math.random() * 100 + "vw";
-      span.style.fontSize = 18 + Math.random() * 18 + "px";
-      span.style.animation = "floatUp 6s linear forwards";
-      heartsContainer.appendChild(span);
-      setTimeout(() => span.remove(), 6000);
-    }, 700);
-
-    return () => {
-      jhalarContainer.remove();
-      heartsContainer.remove();
-      clearInterval(heartInterval);
-    };
-  }, []);
-
-  // 🎉 Confetti
-  useEffect(() => {
-    confetti({ particleCount: 200, spread: 160, origin: { y: 0.6 } });
-  }, []);
+  const rotations = ["-6deg", "4deg", "-3deg", "5deg", "-4deg", "3deg"];
+  const bgColors = ["#fff8dc", "#f0f8ff", "#ffe4e1", "#f5f5dc", "#fafad2"];
 
   return (
-    <div className="birthday-page">
-      <header className="header">
-        <h1 className="glow-title">🎉 Happy Birthday {name}! 🎉</h1>
+
+
+    
+    <div style={styles.page}>
+       <header className="header">
+       <h1 style={styles.heading}>🌸 Happy Birthday Jiji! 🌸</h1>
         <p className="short-message">Wishing you joy, love & laughter 💝</p>
 
-        {/* ✅ Button to go Collage */}
-        <button
-          className="swap-btn"
-          onClick={() => navigate("/collage")}
-          style={{
-            padding: "12px 24px",
-            fontSize: "1.2rem",
-            borderRadius: "12px",
-            border: "none",
-            cursor: "pointer",
-            background: "linear-gradient(90deg, #ff0080, #ff8c00, #ffd700)",
-            color: "#fff",
-            marginTop: "20px",
-            boxShadow: "0 0 15px #ff69b4, 0 0 30px #ffa07a",
-          }}
-        >
-          👉 Go to Collage 🎨
-        </button>
       </header>
 
-      {/* ✅ Gallery */}
-      <div className="gallery">
+      
+
+      <div style={styles.grid}>
         {images.map((img, i) => (
-          <div key={i} className="image-card" style={{ animationDelay: `${i * 0.15}s` }}>
-            <img src={img} alt="birthday" className="gallery-img" />
+          <div
+            key={i}
+            style={{
+              ...styles.card,
+              transform: `rotate(${rotations[i % rotations.length]})`,
+              background: bgColors[i % bgColors.length],
+            }}
+            onClick={() => setSelected(img)}
+          >
+            <img src={img.src} alt={img.title} style={styles.image} />
+            <p style={styles.caption}>{img.title}</p>
           </div>
         ))}
       </div>
 
-      <footer className="footer">🌸 Made with ❤️ just for you Ma’am 🌸</footer>
+      {selected && (
+        <div style={styles.lightbox} onClick={() => setSelected(null)}>
+          <img
+            src={selected.src}
+            alt={selected.title}
+            style={styles.lightboxImg}
+          />
+          <h2 style={styles.lightboxTitle}>{selected.title}</h2>
+        </div>
+      )}
+        <div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "20px",
+  }}
+>
+  <button
+    className="swap-btn"
+    onClick={() => navigate("/Collage")}
+    style={{
+      padding: "12px 24px",
+      fontSize: "1.2rem",
+      borderRadius: "12px",
+      border: "none",
+      cursor: "pointer",
+      background: "linear-gradient(90deg, #ff0080, #ff8c00, #ffd700)",
+      color: "#fff",
+      boxShadow: "0 0 15px #ff69b4, 0 0 30px #ffa07a",
+    }}
+  >
+    👉 Go to Collage 🎨
+  </button>
+</div>
 
-      <style>{`
-        body {
+ <footer className="footer">🌸 Made with ❤️ just for you Ma’am 🌸</footer>
+      {/* Inline CSS for responsiveness */}
+      <style>{` body {
           margin:0;
           font-family:'Dancing Script', cursive;
           background: linear-gradient(-45deg,#ffb6c1,#dda0dd,#87ceeb,#b5fffc);
@@ -120,7 +115,14 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
           animation: gradientShift 12s ease infinite;
           color:white;
         }
-        @keyframes gradientShift {
+        @media (max-width: 480px) {
+          h1 {
+            font-size: 1.6rem !important;
+          }
+          .collage-item img {
+            height: 180px !important;
+          }
+        }  @keyframes gradientShift {
           0% { background-position:0% 50% }
           50% { background-position:100% 50% }
           100% { background-position:0% 50% }
@@ -146,7 +148,110 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
 
         @media (max-width:768px) { .gallery { grid-template-columns: repeat(2, 1fr); } .gallery-img { height: 700px; } }
         @media (max-width:480px) { .gallery { grid-template-columns: 1fr; } .gallery-img { height: 500px; } }
+
+        @media (max-width: 768px) {
+          h1 {
+            font-size: 2rem !important;
+          }
+          .collage-item img {
+            height: 220px !important;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          h1 {
+            font-size: 2.8rem !important;
+          }
+          .collage-item img {
+            height: 280px !important;
+          }
+        }
+  
+
+/* 🌈 Gradient flow animation */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ✨ Pulse glow */
+@keyframes glowPulse {
+  from { text-shadow: 0 0 15px #ff69b4, 0 0 25px #00ffff; }
+  to { text-shadow: 0 0 30px #ffd700, 0 0 50px #ff4500; }
+}
+
       `}</style>
     </div>
   );
 }
+
+const styles = {
+  page: {
+    background: "linear-gradient(135deg, #fbc2eb, #a6c1ee)",
+    minHeight: "100vh",
+    paddingBottom: "40px",
+  },
+  heading: {
+    textAlign: "center",
+    fontSize: "2.5rem",
+    padding: "25px",
+    color: "#fff",
+    fontWeight: "bold",
+    fontFamily: "'Dancing Script', cursive",
+    textShadow: "0 3px 8px rgba(0,0,0,0.3)",
+  },
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+    gap: "20px",
+    padding: "20px",
+  },
+  card: {
+    borderRadius: "12px",
+    padding: "12px",
+    boxShadow: "0 8px 20px rgba(0,0,0,0.25)",
+    cursor: "pointer",
+    transition: "all 0.4s ease",
+    textAlign: "center",
+  },
+  image: {
+    width: "100%",
+    height: "250px",
+    objectFit: "cover",
+    borderRadius: "8px",
+    boxShadow: "0 5px 12px rgba(0,0,0,0.2)",
+  },
+  caption: {
+    marginTop: "10px",
+    fontSize: "1rem",
+    color: "#333",
+    fontStyle: "italic",
+    fontFamily: "'Indie Flower', cursive",
+  },
+  lightbox: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100vw",
+    height: "100vh",
+    background: "rgba(0,0,0,0.8)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1000,
+  },
+  lightboxImg: {
+    maxWidth: "85%",
+    maxHeight: "70%",
+    borderRadius: "12px",
+    boxShadow: "0 6px 20px rgba(0,0,0,0.5)",
+  },
+  lightboxTitle: {
+    color: "#fff",
+    marginTop: "15px",
+    fontFamily: "'Dancing Script', cursive",
+    fontSize: "1.8rem",
+  },
+};
