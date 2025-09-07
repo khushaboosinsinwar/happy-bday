@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DoubleBaamResponsivePage from "./BoubleBaamResponsive";  // ya fir sahi rename karke "./DoubleBaamResponsivePage"
 import HBD from "./HBD";
-import Collage from "./collage";
+import Collage from "./Collage";
 export default function App() {
   return (
     <Router>
