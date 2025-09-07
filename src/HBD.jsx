@@ -1,5 +1,6 @@
 // BeautifulBirthdayGallery.jsx
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import girlImg from "./assets/saree.jpg";
 import selfImg from "./assets/self.jpg";
 import flowerImg from "./assets/coal.jpg";
@@ -15,6 +16,8 @@ import goImg from "./assets/ujjain.jpg";
 import confetti from "canvas-confetti";
 
 export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
+  const navigate = useNavigate();
+
   const images = [
     jhumkaImg,
     selfImg,
@@ -30,9 +33,8 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
     goImg,
   ];
 
-  // 🎀 Upper jhalar/streamers + floating hearts
+  // 🎀 Jhalar & hearts
   useEffect(() => {
-    // Jhalar
     const jhalarContainer = document.createElement("div");
     jhalarContainer.classList.add("jhalar-container");
     document.body.appendChild(jhalarContainer);
@@ -45,7 +47,6 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
       jhalarContainer.appendChild(strip);
     }
 
-    // Hearts
     const heartsContainer = document.createElement("div");
     heartsContainer.classList.add("hearts-container");
     document.body.appendChild(heartsContainer);
@@ -78,16 +79,31 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
       <header className="header">
         <h1 className="glow-title">🎉 Happy Birthday {name}! 🎉</h1>
         <p className="short-message">Wishing you joy, love & laughter 💝</p>
+
+        {/* ✅ Button to go Collage */}
+        <button
+          className="swap-btn"
+          onClick={() => navigate("/collage")}
+          style={{
+            padding: "12px 24px",
+            fontSize: "1.2rem",
+            borderRadius: "12px",
+            border: "none",
+            cursor: "pointer",
+            background: "linear-gradient(90deg, #ff0080, #ff8c00, #ffd700)",
+            color: "#fff",
+            marginTop: "20px",
+            boxShadow: "0 0 15px #ff69b4, 0 0 30px #ffa07a",
+          }}
+        >
+          👉 Go to Collage 🎨
+        </button>
       </header>
 
-      {/* ✅ 3-column Gallery */}
+      {/* ✅ Gallery */}
       <div className="gallery">
         {images.map((img, i) => (
-          <div
-            key={i}
-            className="image-card"
-            style={{ animationDelay: `${i * 0.15}s` }}
-          >
+          <div key={i} className="image-card" style={{ animationDelay: `${i * 0.15}s` }}>
             <img src={img} alt="birthday" className="gallery-img" />
           </div>
         ))}
@@ -104,160 +120,32 @@ export default function BeautifulBirthdayGallery({ name = "Jiji" }) {
           animation: gradientShift 12s ease infinite;
           color:white;
         }
-          .glow-title{
-          font-size:4rem;
-          }
-
         @keyframes gradientShift {
           0% { background-position:0% 50% }
           50% { background-position:100% 50% }
           100% { background-position:0% 50% }
         }
-
-        /* Header */
         .header { padding:40px 20px; text-align:center; z-index:2; position:relative; }
-        .glow-title {
-          font-size:3rem;
-          text-shadow:0 0 10px #ff69b4,0 0 20px #ff69b4,0 0 30px #dda0dd,0 0 40px #ffa07a;
-          animation: neonGlow 2s infinite alternate;
-        }
         .short-message { font-size:1.5rem; margin-top:10px; color:#fff; text-shadow:0 0 8px #fff; }
 
-        @keyframes neonGlow {
-          from {
-            text-shadow:0 0 10px #ff69b4,0 0 20px #ff69b4,0 0 30px #dda0dd,0 0 40px #ffa07a
-          }
-          to {
-            text-shadow:0 0 20px #fff,0 0 40px #ffb6c1,0 0 60px #dda0dd,0 0 80px #ff69b4
-          }
-        }
-
-        /* Jhalar / Streamers */
         .jhalar-container { position:absolute; top:0; left:0; width:100%; height:220px; pointer-events:none; overflow:hidden; z-index:1; }
         .strip { position:absolute; top:-50px; width:5px; height:100px; border-radius:3px; animation: swing 3s infinite ease-in-out; }
-        @keyframes swing {0%{transform:rotate(0deg)}25%{transform:rotate(10deg)}50%{transform:rotate(0deg)}75%{transform:rotate(-10deg)}100%{transform:rotate(0deg)}}
+        @keyframes swing {0%{transform:rotate(0deg)}25%{transform:rotate(10deg)}50%{transform:rotate(0deg)}75%{transform:rotate(-10deg)}100%{transform:rotate(0)}}
 
-        /* Floating hearts */
         .hearts-container span { display:block; position:absolute; bottom:-50px; animation: floatUp 6s linear forwards; }
-        @keyframes floatUp {
-          0% { transform:translateY(0) rotate(0deg); opacity:1 }
-          100% { transform:translateY(-250px) rotate(360deg); opacity:0 }
-        }
+        @keyframes floatUp {0% { transform:translateY(0) rotate(0deg); opacity:1 } 100% { transform:translateY(-250px) rotate(360deg); opacity:0 }}
 
-       
-/* ✅ Always 2-column Gallery */
-.gallery { 
-  display: grid; 
-  grid-template-columns: repeat(2, 1fr);  
-  gap: 10px; 
-  width: 95%; 
-  margin: 20px auto; 
-  z-index: 2; 
-  position: relative; 
-}
-  .glow-title {
-  font-size: 3rem;   /* Desktop par bada */
-  font-weight: 900;
-  background: linear-gradient(
-    90deg,
-    #9d50bb,   /* purple */
-    #ff6ec4,   /* pink */
-    #f9d423,   /* peach-yellow */
-    #00c9a7,   /* mint green */
-    #2193b0    /* cyan blue */
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  white-space: nowrap; /* ek hi line me */
-  text-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
-  animation: neonGlow 2s infinite alternate;
-}
-
-@media (max-width: 768px) {
-  .glow-title {
-    font-size: 3.2rem; /* Tablet */
-  }
-}
-
-@media (max-width: 480px) {
-  .glow-title {
-    font-size: 2.2rem; /* Mobile me ek line */
-  }
-}
-
-
-.gallery-img {
-  width: 100%;
-  height: 350px;   /* ⬅️ Thoda small kiya */
-  object-fit: contain;  /* ⬅️ Full photo visible */
-  border-radius: 12px;
-  background: #fff;  /* ⬅️ White padding behind photo */
-  padding: 5px;
-  transition: transform 0.4s ease, filter 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* ✅ Mobile bhi 2 columns */
-@media (max-width:480px) { 
-  .gallery { grid-template-columns: repeat(2, 1fr); }  
-  .gallery-img { height: 250px; }  /* ⬅️ Mobile me aur chhota */
-}
-
-        .image-card {
-          position:relative;
-          overflow:hidden;
-          border-radius:20px;
-          border:3px solid transparent;
-          opacity:0;
-          transform:translateY(30px);
-          animation: fadeIn 0.8s ease forwards;
-        }
-
-       .gallery-img {
-  width: 100%;
-  height: 900px;   /* ⬅️ Super tall on desktop */
-  object-fit: cover;
-  border-radius: 20px;
-  transition: transform 0.5s ease, filter 0.4s ease, box-shadow 0.4s ease;
-}
-
-
-
-        .image-card:hover .gallery-img {
-          transform:scale(1.1) rotate(1deg);
-          filter:brightness(1.2) saturate(1.3);
-          box-shadow:0 0 25px #ff69b4,0 0 50px #ff69b4,0 0 75px #dda0dd,0 0 100px #ffb6c1;
-        }
+        .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 95%; margin: 20px auto; z-index:2; position: relative; }
+        .image-card { position:relative; overflow:hidden; border-radius:20px; border:3px solid transparent; opacity:0; transform:translateY(30px); animation: fadeIn 0.8s ease forwards; }
+        @keyframes fadeIn { from {opacity:0; transform:translateY(30px)} to {opacity:1; transform:translateY(0)} }
+        .gallery-img { width:100%; height:350px; object-fit:contain; border-radius:12px; background:#fff; padding:5px; transition: transform 0.4s ease, filter 0.3s ease, box-shadow 0.3s ease; }
+        .image-card:hover .gallery-img { transform:scale(1.1) rotate(1deg); filter:brightness(1.2) saturate(1.3); box-shadow:0 0 25px #ff69b4,0 0 50px #ff69b4,0 0 75px #dda0dd,0 0 100px #ffb6c1; }
         .image-card:hover { border-color:#ff69b4; box-shadow:0 0 25px #ff69b4,0 0 50px #dda0dd; }
 
-        @keyframes fadeIn {
-          from {opacity:0; transform:translateY(30px)}
-          to {opacity:1; transform:translateY(0)}
-        }
+        .footer { text-align:center; margin:40px 0; font-size:1.2rem; color:#fff; text-shadow:0 0 6px #ff69b4; }
 
-        /* Footer */
-        .footer {
-          text-align:center;
-          margin:40px 0;
-          font-size:1.2rem;
-          color:#fff;
-          text-shadow:0 0 6px #ff69b4;
-        }
-
-        /* Responsive tweaks */
-        @media (max-width:768px) { 
-          .gallery { grid-template-columns: repeat(2, 1fr); }
-          .glow-title { font-size:2.2rem; } 
-          .short-message { font-size:1.2rem; } 
-          .gallery-img { height: 700px; }  /* ⬅️ Tall on tablet */
-        }
-        @media (max-width:480px) { 
-          .gallery { grid-template-columns: 1fr; }
-          .glow-title { font-size:1.6rem; } 
-          .short-message { font-size:1rem; } 
-           .gallery-img { height: 500px; }  /* ⬅️ Tall on mobile */
-        }
+        @media (max-width:768px) { .gallery { grid-template-columns: repeat(2, 1fr); } .gallery-img { height: 700px; } }
+        @media (max-width:480px) { .gallery { grid-template-columns: 1fr; } .gallery-img { height: 500px; } }
       `}</style>
     </div>
   );

@@ -129,18 +129,17 @@ export default function DoubleBaamResponsivePage() {
           color: white;
           padding: 0 5vw;
         }
-
-   .title {
-  font-size: clamp(3rem, 8vw, 6rem); /* Responsive bada size */
-  font-weight: 900;  /* Super bold */
-  font-style: italic; /* ⬅️ Italic */
-  color: #ffffff;  /* ⬅️ White text */
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 3px;
+.title {
+  font-size: clamp(1.8rem, 4.5vw, 3rem); /* Medium size: responsive */
+  font-weight: 700;  /* Bold but thoda kam heavy */
+  font-style: italic; 
+  color: #ffffff;  
+  font-family: 'Dancing Script', cursive;
+  letter-spacing: 2px;
   white-space: nowrap;
-  text-shadow: 0 0 20px #ff69b4,
-               0 0 35px #00ffff,
-               0 0 50px #ffd700;
+  text-shadow: 0 0 12px #ff69b4,
+               0 0 20px #00ffff,
+               0 0 28px #ffd700;
   line-height: 1.2;
 }
 
