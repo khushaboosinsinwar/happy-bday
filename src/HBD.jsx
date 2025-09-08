@@ -1,18 +1,28 @@
 // App.jsx
 import React, { useState } from "react";
 
-import girlImg from "./assets/saree.jpg";
-import selfImg from "./assets/self.jpg";
-import flowerImg from "./assets/coal.jpg";
-import cutieImg from "./assets/soniyawith.jpg";
-import parkImg from "./assets/suit.jpg";
-import roseImg from "./assets/rose.jpg";
-import jhumkaImg from "./assets/jhumka.jpg";
-import balloImg from "./assets/pop.jpg";
-import hbgImg from "./assets/hath.jpg";
-import cutemsgImg from "./assets/crose.jpg";
-import wisheImg from "./assets/bhoot.jpg";
-import goImg from "./assets/ujjain.jpg";
+import hihe from "./assets/hihe.jpg";
+import saree from "./assets/saree.jpg";
+import sarees from "./assets/sarees.jpg";
+import doctor1 from "./assets/doctor1.jpg";
+import nothing from "./assets/nothing.jpg";
+import nowok from "./assets/nowok.jpg";
+import okok from "./assets/okok.jpg";
+import funtime from "./assets/funtime.jpg";
+import delhi from "./assets/delhi.jpg";
+import sleep from "./assets/sleep.jpg";
+import threed from "./assets/threed.jpg";
+import withflower from "./assets/withflower.jpg";
+import winter from "./assets/winter.jpg";
+import winterpurple from "./assets/winterpurple.jpg";
+import wintergreen from "./assets/wintergreen.jpg";
+import handpose from "./assets/handpose.jpg";
+import hair from "./assets/hair.jpg";
+import bachpan from "./assets/bachpan.jpg";
+import scooty from "./assets/scooty.jpg";
+import movie from "./assets/movie.jpg";
+import bhagtain from "./assets/bhagtain.jpg";
+
 import { useNavigate } from "react-router-dom";
 
 
@@ -22,18 +32,29 @@ export default function App() {
   const [selected, setSelected] = useState(null);
 
   const images = [
-    { src: girlImg, title: "Saree Style" },
-    { src: selfImg, title: "Selfie Vibes" },
-    { src: flowerImg, title: "Coal Flower" },
-    { src: cutieImg, title: "Cute Memory" },
-    { src: parkImg, title: "Suit Outfit" },
-    { src: roseImg, title: "Red Rose" },
-    { src: jhumkaImg, title: "Golden Jhumka" },
-    { src: balloImg, title: "Pop Party" },
-    { src: hbgImg, title: "Hand Pose" },
-    { src: cutemsgImg, title: "Cross Flower" },
-    { src: wisheImg, title: "Bhoot Fun" },
-    { src: goImg, title: "Trip to Ujjain" },
+    { src: movie, title: "kajal" },
+    { src: scooty, title: "Scooty Ride" },
+    { src: delhi, title: "Trip to Delhi" },
+    { src: doctor1, title: "Doctor Look" },
+    { src: nothing, title: "Lost in Thoughts" },
+    { src: okok, title: "Okay Vibes" },
+    { src: funtime, title: "Fun Time" },
+    { src: hihe, title: ".... " },
+    { src: sleep, title: "Sleep Mode" },
+    { src: threed, title: "3 photos " },
+    { src: saree, title: "Saree Style" },
+    { src: sarees, title: "Saree pose" },
+    { src: withflower, title: "With Flower" },
+    { src: nowok, title: "Bindi " },
+    { src: winter, title: "Winter Mood" },
+    { src: winterpurple, title: "Purple Winter" },
+    { src: wintergreen, title: "Green Winter" },
+    { src: handpose, title: "Hand Pose" },
+    { src: hair, title: "Hair Flip" },
+    { src: bachpan, title: "Childhood Days" },
+
+
+    { src: bhagtain, title: "culture time" },
   ];
 
   const rotations = ["-6deg", "4deg", "-3deg", "5deg", "-4deg", "3deg"];
@@ -42,15 +63,15 @@ export default function App() {
   return (
 
 
-    
+
     <div style={styles.page}>
-       <header className="header">
-       <h1 style={styles.heading}>🌸 Happy Birthday Jiji! 🌸</h1>
+      <header className="header">
+        <h1 style={styles.heading}>🌸 Happy Birthday Jiji! 🌸</h1>
         <p className="short-message">Wishing you joy, love & laughter 💝</p>
 
       </header>
 
-      
+
 
       <div style={styles.grid}>
         {images.map((img, i) => (
@@ -79,33 +100,33 @@ export default function App() {
           <h2 style={styles.lightboxTitle}>{selected.title}</h2>
         </div>
       )}
-        <div
-  style={{
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: "20px",
-  }}
->
-  <button
-    className="swap-btn"
-    onClick={() => navigate("/Collage")}
-    style={{
-      padding: "12px 24px",
-      fontSize: "1.2rem",
-      borderRadius: "12px",
-      border: "none",
-      cursor: "pointer",
-      background: "linear-gradient(90deg, #ff0080, #ff8c00, #ffd700)",
-      color: "#fff",
-      boxShadow: "0 0 15px #ff69b4, 0 0 30px #ffa07a",
-    }}
-  >
-    👉 Go to Collage 🎨
-  </button>
-</div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "20px",
+        }}
+      >
+        <button
+          className="swap-btn"
+          onClick={() => navigate("/Collage")}
+          style={{
+            padding: "12px 24px",
+            fontSize: "1.2rem",
+            borderRadius: "12px",
+            border: "none",
+            cursor: "pointer",
+            background: "linear-gradient(90deg, #ff0080, #ff8c00, #ffd700)",
+            color: "#fff",
+            boxShadow: "0 0 15px #ff69b4, 0 0 30px #ffa07a",
+          }}
+        >
+          👉 Go to Collage 🎨
+        </button>
+      </div>
 
- <footer className="footer">🌸 Made with ❤️ just for you Ma’am 🌸</footer>
+      <footer className="footer">🌸 Made with ❤️ just for you Ma’am 🌸</footer>
       {/* Inline CSS for responsiveness */}
       <style>{` body {
           margin:0;
