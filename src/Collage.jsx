@@ -3,19 +3,19 @@ import Confetti from "react-confetti";
 import { motion } from "framer-motion";
 import girlImg from "./assets/saree.jpg";
 import selfImg from "./assets/self.jpg";
-import flowerImg from "./assets/coal.jpg";
-import cutieImg from "./assets/soniyawith.jpg";
-// import parkImg from "./assets/suit.jpg";
 import roseImg from "./assets/rose.jpg";
 import jhumkaImg from "./assets/jhumka.jpg";
-import balloImg from "./assets/pop.jpg";
-import hbgImg from "./assets/hath.jpg";
+import shitdown from "./assets/shitdown.jpg";
 import cutemsgImg from "./assets/crose.jpg";
 import wisheImg from "./assets/bhoot.jpg";
 import goImg from "./assets/ujjain.jpg";
+import temple from "./assets/temple.jpg";
+import black from "./assets/black.jpg";
+import style from "./assets/style.jpg";
+import red from "./assets/red.jpg";
 export default function App() {
   const [index, setIndex] = useState(0);
-  const images = [cutemsgImg,wisheImg,goImg,girlImg,selfImg,flowerImg,cutieImg,roseImg,balloImg,hbgImg];
+  const images = [cutemsgImg,wisheImg,red,shitdown,goImg,girlImg,selfImg,jhumkaImg,roseImg,temple,black,style,];
 
   // Auto slideshow
   useEffect(() => {

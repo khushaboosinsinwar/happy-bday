@@ -11,18 +11,26 @@ import okok from "./assets/okok.jpg";
 import funtime from "./assets/funtime.jpg";
 import delhi from "./assets/delhi.jpg";
 import sleep from "./assets/sleep.jpg";
+ import parkImg from "./assets/suit.jpg";
 import threed from "./assets/threed.jpg";
+import allen from "./assets/allen.jpg";
+import lehega from "./assets/lehega.jpg";
 import withflower from "./assets/withflower.jpg";
 import winter from "./assets/winter.jpg";
 import winterpurple from "./assets/winterpurple.jpg";
 import wintergreen from "./assets/wintergreen.jpg";
 import handpose from "./assets/handpose.jpg";
 import hair from "./assets/hair.jpg";
+import shit from "./assets/shit.jpg";
 import bachpan from "./assets/bachpan.jpg";
 import scooty from "./assets/scooty.jpg";
 import movie from "./assets/movie.jpg";
+import flowerImg from "./assets/coal.jpg";
 import bhagtain from "./assets/bhagtain.jpg";
-
+import balloImg from "./assets/pop.jpg";
+import redsuit from "./assets/redsuit.jpg";
+import posedown from "./assets/posedown.jpg";
+import cutieImg from "./assets/soniyawith.jpg";
 import { useNavigate } from "react-router-dom";
 
 
@@ -32,25 +40,34 @@ export default function App() {
   const [selected, setSelected] = useState(null);
 
   const images = [
-    { src: movie, title: "kajal" },
+    { src: movie, title: "kajal😘" },
     { src: scooty, title: "Scooty Ride" },
-    { src: delhi, title: "Trip to Delhi" },
+    { src: delhi, title: "spectacles" },
     { src: doctor1, title: "Doctor Look" },
-    { src: nothing, title: "Lost in Thoughts" },
-    { src: okok, title: "Okay Vibes" },
-    { src: funtime, title: "Fun Time" },
-    { src: hihe, title: ".... " },
-    { src: sleep, title: "Sleep Mode" },
-    { src: threed, title: "3 photos " },
-    { src: saree, title: "Saree Style" },
-    { src: sarees, title: "Saree pose" },
+    { src: nothing, title: "💞💞" },
+    { src: okok, title: "🧿💙" },
+ { src: posedown, title: "🧿💙" },
+     { src: shit, title: "🤩🤩" }, 
+      { src: parkImg, title: "❣️✨" }, 
+    { src: funtime, title: "😉😉" },
+    { src: hihe, title: "✨💖 " },
+        { src: redsuit, title: "🧿💙" },
+       { src: allen, title: "💖 " },
+      { src:cutieImg, title: "💖 " },
+    { src: sleep, title: "Lost in Thoughts" },
+    { src: threed, title: "😚😚" },
+     { src: lehega, title: "🧿💙" },
+    { src: saree, title: "Saree🥰" },
+    { src: sarees, title: "Saree pose😍" },
     { src: withflower, title: "With Flower" },
     { src: nowok, title: "Bindi " },
+      { src: balloImg, title: "💗💗" }, 
     { src: winter, title: "Winter Mood" },
-    { src: winterpurple, title: "Purple Winter" },
-    { src: wintergreen, title: "Green Winter" },
+    { src: winterpurple, title: "💜💜" },
+    { src: wintergreen, title: "💚💚" },
     { src: handpose, title: "Hand Pose" },
     { src: hair, title: "Hair Flip" },
+        { src: flowerImg, title: "fun time😉😉" },
     { src: bachpan, title: "Childhood Days" },
 
 
