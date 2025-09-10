@@ -11,7 +11,7 @@ import okok from "./assets/okok.jpg";
 import funtime from "./assets/funtime.jpg";
 import delhi from "./assets/delhi.jpg";
 import sleep from "./assets/sleep.jpg";
- import parkImg from "./assets/suit.jpg";
+import parkImg from "./assets/suit.jpg";
 import threed from "./assets/threed.jpg";
 import allen from "./assets/allen.jpg";
 import lehega from "./assets/lehega.jpg";
@@ -31,6 +31,18 @@ import balloImg from "./assets/pop.jpg";
 import redsuit from "./assets/redsuit.jpg";
 import posedown from "./assets/posedown.jpg";
 import cutieImg from "./assets/soniyawith.jpg";
+import girlImg from "./assets/saree.jpg";
+import selfImg from "./assets/self.jpg";
+import roseImg from "./assets/rose.jpg";
+import jhumkaImg from "./assets/jhumka.jpg";
+import shitdown from "./assets/shitdown.jpg";
+import cutemsgImg from "./assets/crose.jpg";
+import wisheImg from "./assets/bhoot.jpg";
+import goImg from "./assets/ujjain.jpg";
+import temple from "./assets/temple.jpg";
+import black from "./assets/black.jpg";
+import style from "./assets/style.jpg";
+import red from "./assets/red.jpg";
 import { useNavigate } from "react-router-dom";
 
 
@@ -39,40 +51,50 @@ export default function App() {
 
   const [selected, setSelected] = useState(null);
 
-  const images = [
-    { src: movie, title: "kajal😘" },
-    { src: scooty, title: "Scooty Ride" },
-    { src: delhi, title: "spectacles" },
-    { src: doctor1, title: "Doctor Look" },
-    { src: nothing, title: "💞💞" },
-    { src: okok, title: "🧿💙" },
- { src: posedown, title: "🧿💙" },
-     { src: shit, title: "🤩🤩" }, 
-      { src: parkImg, title: "❣️✨" }, 
-    { src: funtime, title: "😉😉" },
-    { src: hihe, title: "✨💖 " },
-        { src: redsuit, title: "🧿💙" },
-       { src: allen, title: "💖 " },
-      { src:cutieImg, title: "💖 " },
-    { src: sleep, title: "Lost in Thoughts" },
-    { src: threed, title: "😚😚" },
-     { src: lehega, title: "🧿💙" },
-    { src: saree, title: "Saree🥰" },
-    { src: sarees, title: "Saree pose😍" },
-    { src: withflower, title: "With Flower" },
-    { src: nowok, title: "Bindi " },
-      { src: balloImg, title: "💗💗" }, 
-    { src: winter, title: "Winter Mood" },
-    { src: winterpurple, title: "💜💜" },
-    { src: wintergreen, title: "💚💚" },
-    { src: handpose, title: "Hand Pose" },
-    { src: hair, title: "Hair Flip" },
-        { src: flowerImg, title: "fun time😉😉" },
-    { src: bachpan, title: "Childhood Days" },
-
-
-    { src: bhagtain, title: "culture time" },
-  ];
+ const images = [
+  { src: movie, title: "kajal 😘💖" },
+  { src: scooty, title: "Scooty Ride 🛵😉" },
+  { src: delhi, title: "Spectacles 🤓✨" },
+  { src: doctor1, title: "Doctor Look 🧑‍⚕️💙" },
+  { src: nothing, title: "💞💞🌸" },
+  { src: okok, title: "✨💖" },
+  { src: posedown, title: "🧿💙" },
+  { src: shit, title: "🤩🤩💖" },
+  { src: parkImg, title: "❣️✨" },
+  { src: funtime, title: "😉😉🎉" },
+  { src: hihe, title: "💖🌸" },
+  { src: redsuit, title: "💞✨" },
+  { src: allen, title: "💖😍" },
+  { src: cutieImg, title: "💖🥰" },
+  { src: sleep, title: "Lost in Thoughts 💭" },
+  { src: threed, title: "😚😚💕" },
+  { src: lehega, title: "🧿💙🌺" },
+  { src: saree, title: "Saree 🥰🌸" },
+  { src: sarees, title: "Saree Pose 😍" },
+  { src: withflower, title: "With Flower 🌹✨" },
+  { src: nowok, title: "Bindi 🌸💜" },
+  { src: balloImg, title: "💗💗" },
+  { src: winter, title: "Winter Mood ❄️🧣" },
+  { src: winterpurple, title: "💜💜" },
+  { src: wintergreen, title: "💚💚" },
+  { src: handpose, title: "Hand Pose 🤲✨" },
+  { src: hair, title: "Hair Flip 💇‍♀️🌸" },
+  { src: flowerImg, title: "Fun Time 😉😉🌼" },
+  { src: bachpan, title: "Childhood Days 🧒💖" },
+  { src: girlImg, title: "Saree Vibes 🌸" },
+  { src: selfImg, title: " Selfie Queen 👑💖" },
+  { src: roseImg, title: "🌹 Rose Beauty 💕" },
+  { src: jhumkaImg, title: "✨ Jhumka Look ✨ " },
+  { src: shitdown, title: "💓💓🌸" },
+  { src: cutemsgImg, title: "💌🥰" },
+  { src: wisheImg, title: "👻 Spooky Bhoot ✨" },
+  { src: goImg, title: "💓💓🌸" },
+  { src: temple, title: "🛕 Ujjain Trip 🙏✨" },
+  { src: black, title: "🖤🖤" },
+  { src: style, title: "Beauty 🌸" },
+  { src: red, title: "❤️❤️" },
+  { src: bhagtain, title: "Culture Time 🙏🕉️" },
+];
 
   const rotations = ["-6deg", "4deg", "-3deg", "5deg", "-4deg", "3deg"];
   const bgColors = ["#fff8dc", "#f0f8ff", "#ffe4e1", "#f5f5dc", "#fafad2"];
@@ -255,7 +277,7 @@ const styles = {
   },
   image: {
     width: "100%",
-    height: "250px",
+    height: "310px",
     objectFit: "cover",
     borderRadius: "8px",
     boxShadow: "0 5px 12px rgba(0,0,0,0.2)",
