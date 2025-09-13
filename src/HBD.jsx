@@ -95,185 +95,66 @@ export default function App() {
     { src: bhagtain, title: "Culture Time 🙏🕉️" },
   ];
 
-  const rotations = ["-6deg", "4deg", "-3deg", "5deg", "-4deg", "3deg"];
-  const bgColors = ["#fff8dc", "#f0f8ff", "#ffe4e1", "#f5f5dc", "#fafad2"];
-
   return (
-    <div style={styles.page}>
-      <header className="header">
-        <h1 style={styles.heading}>Happy Birthday Jiji💝</h1>
+    <div className="min-h-screen bg-pink-200 flex flex-col">
+      {/* Header */}
+      <header className="py-6 text-center">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-pink-700 drop-shadow-lg">
+          Happy Birthday Jiji💝
+        </h1>
       </header>
 
-      <div style={styles.grid}>
+      {/* Grid Gallery */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4">
         {images.map((img, i) => (
           <div
             key={i}
-            style={{
-              ...styles.card,
-              transform: `rotate(${rotations[i % rotations.length]})`,
-              background: bgColors[i % bgColors.length],
-            }}
+            className="bg-pink-100 rounded-xl p-2 shadow-md cursor-pointer transition-transform transform hover:scale-105"
             onClick={() => setSelected(img)}
           >
-            <img src={img.src} alt={img.title} style={styles.image} />
-            <p style={styles.caption}>{img.title}</p>
+            <img
+              src={img.src}
+              alt={img.title}
+              className="w-full aspect-[3/4] object-cover rounded-lg shadow"
+            />
+            <p className="mt-2 text-center text-sm italic text-gray-700">
+              {img.title}
+            </p>
           </div>
         ))}
       </div>
 
+      {/* Lightbox */}
       {selected && (
-        <div style={styles.lightbox} onClick={() => setSelected(null)}>
+        <div
+          className="fixed inset-0 bg-black bg-opacity-80 flex flex-col justify-center items-center p-4 z-50"
+          onClick={() => setSelected(null)}
+        >
           <img
             src={selected.src}
             alt={selected.title}
-            style={styles.lightboxImg}
+            className="w-full max-w-lg max-h-[70vh] rounded-xl shadow-lg object-contain"
           />
-          <h2 style={styles.lightboxTitle}>{selected.title}</h2>
+          <h2 className="text-white text-lg mt-4 font-semibold">
+            {selected.title}
+          </h2>
         </div>
       )}
 
-      <div style={styles.center}>
+      {/* Button */}
+      <div className="flex justify-center mt-6">
         <button
-          className="swap-btn"
           onClick={() => navigate("/Collage")}
-          style={styles.button}
+          className="px-6 py-3 text-lg rounded-lg bg-gradient-to-r from-pink-500 via-red-400 to-yellow-400 text-white shadow-lg hover:scale-105 transition-transform"
         >
           click me💕
         </button>
       </div>
 
-      <footer className="footer">🌸 Made with ❤️ just for you Ma’am 🌸</footer>
-
-      {/* Inline CSS for responsiveness */}
-      <style>{`
-        body {
-          margin:0;
-          font-family:'Dancing Script', cursive;
-          background: linear-gradient(-45deg,#ffb6c1,#dda0dd,#87ceeb,#b5fffc);
-          background-size:400% 400%;
-          animation: gradientShift 12s ease infinite;
-          color:white;
-        }
-        @keyframes gradientShift {
-          0% { background-position:0% 50% }
-          50% { background-position:100% 50% }
-          100% { background-position:0% 50% }
-        }
-        .header { padding:20px; text-align:center; z-index:2; position:relative; }
-        .footer { text-align:center; margin:20px 10px; font-size:1rem; color:#fff; text-shadow:0 0 6px #ff69b4; }
-
-        /* 📱 Phones */
-        @media (max-width: 480px) {
-          h1 { font-size: 1.3rem !important; }
-          .footer { font-size: 0.9rem; }
-          img { height: auto !important; max-height: 200px; }
-        }
-
-        /* 📱 Tablets */
-        @media (max-width: 768px) {
-          h1 { font-size: 1.6rem !important; }
-          .footer { font-size: 1rem; }
-          img { max-height: 220px; }
-        }
-
-        /* 💻 Desktop */
-        @media (min-width: 1024px) {
-          h1 { font-size: 2.5rem !important; }
-          .footer { font-size: 1.2rem; }
-        }
-      `}</style>
+      {/* Footer */}
+      <footer className="text-center my-6 text-white drop-shadow-md text-sm sm:text-base">
+        🌸 Made with ❤️ just for you Ma’am 🌸
+      </footer>
     </div>
   );
 }
-
-const styles = {
-  page: {
-    background: "linear-gradient(135deg, #fbc2eb, #a6c1ee)",
-    minHeight: "100vh",
-    paddingBottom: "20px",
-  },
-  heading: {
-    textAlign: "center",
-    fontSize: "2rem",
-    color: "#f027a3ff",
-    fontWeight: "bold",
-    fontFamily: "'Dancing Script', cursive",
-    textShadow: "0 3px 8px rgba(0,0,0,0.3)",
-    margin: "0",
-  },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-    gap: "12px",
-    padding: "12px",
-  },
-  card: {
-    borderRadius: "10px",
-    padding: "8px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.25)",
-    cursor: "pointer",
-    transition: "all 0.3s ease",
-    textAlign: "center",
-  },
-  image: {
-    width: "100%",
-    height: "200px",
-    objectFit: "cover",
-    borderRadius: "8px",
-    boxShadow: "0 3px 8px rgba(0,0,0,0.2)",
-  },
-  caption: {
-    marginTop: "6px",
-    fontSize: "0.8rem",
-    color: "#333",
-    fontStyle: "italic",
-    fontFamily: "'Indie Flower', cursive",
-  },
-  lightbox: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    background: "rgba(0,0,0,0.8)",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    zIndex: 1000,
-    padding: "10px",
-  },
-  lightboxImg: {
-    width: "100%",
-    maxWidth: "500px",
-    maxHeight: "65%",
-    borderRadius: "12px",
-    boxShadow: "0 6px 20px rgba(0,0,0,0.5)",
-    objectFit: "contain",
-  },
-  lightboxTitle: {
-    color: "#fff",
-    marginTop: "10px",
-    fontFamily: "'Dancing Script', cursive",
-    fontSize: "1.2rem",
-    textAlign: "center",
-    padding: "0 10px",
-  },
-  center: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: "15px",
-  },
-  button: {
-    padding: "10px 18px",
-    fontSize: "1rem",
-    borderRadius: "10px",
-    border: "none",
-    cursor: "pointer",
-    background: "linear-gradient(90deg, #ff0080, #ff8c00, #ffd700)",
-    color: "#fff",
-    boxShadow: "0 0 10px #ff69b4, 0 0 20px #ffa07a",
-  },
-};
-
