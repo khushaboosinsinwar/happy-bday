@@ -92,9 +92,9 @@ export default function DoubleBaamResponsivePage() {
       <canvas ref={canvasRef} className="fireworks-canvas"></canvas>
       <div className="content">
         <h1 className="title">Happy Birthday Jiji💖</h1>
-        <p className="msg">✨ Wishing you love, joy & endless happiness ✨</p>
+        <p className="msg">✨Hearts full of love, souls full of peace, days full of smiles. ✨</p>
         <button className="swap-btn" onClick={() => navigate("/hbd")}>
-          👉 Go to Birthday Slide 🎉
+          Celebrate🎉
         </button>
       </div>
 

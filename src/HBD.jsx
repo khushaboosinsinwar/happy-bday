@@ -8,7 +8,7 @@ import doctor1 from "./assets/doctor1.jpg";
 import nothing from "./assets/nothing.jpg";
 import nowok from "./assets/nowok.jpg";
 import okok from "./assets/okok.jpg";
-import funtime from "./assets/funtime.jpg";
+import hbd from "./assets/hbd.jpg";
 import delhi from "./assets/delhi.jpg";
 import sleep from "./assets/sleep.jpg";
 import parkImg from "./assets/suit.jpg";
@@ -61,7 +61,7 @@ export default function App() {
   { src: posedown, title: "🧿💙" },
   { src: shit, title: "🤩🤩💖" },
   { src: parkImg, title: "❣️✨" },
-  { src: funtime, title: "😉😉🎉" },
+  { src: hbd, title: "😉😉🎉" },
   { src: hihe, title: "💖🌸" },
   { src: redsuit, title: "💞✨" },
   { src: allen, title: "💖😍" },
@@ -105,8 +105,8 @@ export default function App() {
 
     <div style={styles.page}>
       <header className="header">
-        <h1 style={styles.heading}>🌸 Happy Birthday Jiji! 🌸</h1>
-        <p className="short-message">Wishing you joy, love & laughter 💝</p>
+        <h1 style={styles.heading}>Happy Birthday Jiji💝</h1>
+       
 
       </header>
 
@@ -161,7 +161,7 @@ export default function App() {
             boxShadow: "0 0 15px #ff69b4, 0 0 30px #ffa07a",
           }}
         >
-          👉 Go to Collage 🎨
+          click me💕
         </button>
       </div>
 
@@ -254,9 +254,9 @@ const styles = {
   },
   heading: {
     textAlign: "center",
-    fontSize: "2.5rem",
-    padding: "25px",
-    color: "#fff",
+    fontSize: "2rem",
+    padding: "0px",
+    color: "#f027a3ff",
     fontWeight: "bold",
     fontFamily: "'Dancing Script', cursive",
     textShadow: "0 3px 8px rgba(0,0,0,0.3)",
