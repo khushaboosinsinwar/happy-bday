@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Confetti from "react-confetti";
 import { motion } from "framer-motion";
 // 🎥 Import your video
 import birthdayVideo from "./assets/pooji.mp4";
 
 export default function App() {
+  const [showConfetti, setShowConfetti] = useState(false);
+  const videoRef = useRef(null);
+
+  // 🎬 When video starts playing → start confetti
+  const handleVideoPlay = () => {
+    setShowConfetti(true);
+
+    // ⏳ Stop confetti after 21 sec
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 21000);
+  };
+
   return (
     <div className="relative min-h-screen bg-gradient-to-r from-purple-900 via-black to-purple-700 text-white flex flex-col items-center justify-center overflow-hidden px-4">
-      {/* 🎆 Confetti */}
-      <Confetti width={window.innerWidth} height={window.innerHeight} />
+      {/* 🎆 Confetti (sync with video, lasts 21 sec) */}
+      {showConfetti && (
+        <Confetti width={window.innerWidth} height={window.innerHeight} />
+      )}
 
       {/* 🎂 Birthday Text */}
       <motion.h1
@@ -41,16 +56,18 @@ export default function App() {
         className="w-full max-w-[320px] sm:max-w-[400px] md:max-w-[450px] rounded-2xl overflow-hidden shadow-2xl border-4 border-purple-500"
       >
         <video
+          ref={videoRef}
           src={birthdayVideo}
           className="w-full h-auto object-cover"
           autoPlay
           loop
           muted
-          controls // 👉 remove this if you don’t want play/pause buttons
+          controls
+          onPlay={handleVideoPlay} // 🎯 Sync confetti with video
         />
       </motion.div>
 
-      {/* 🎶 Background Music (use .mp3) */}
+      {/* 🎶 Background Music */}
       <audio autoPlay loop>
         <source src="/music.mp3" type="audio/mpeg" />
       </audio>
