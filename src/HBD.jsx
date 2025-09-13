@@ -123,7 +123,11 @@ export default function App() {
 
       {selected && (
         <div style={styles.lightbox} onClick={() => setSelected(null)}>
-          <img src={selected.src} alt={selected.title} style={styles.lightboxImg} />
+          <img
+            src={selected.src}
+            alt={selected.title}
+            style={styles.lightboxImg}
+          />
           <h2 style={styles.lightboxTitle}>{selected.title}</h2>
         </div>
       )}
@@ -155,19 +159,27 @@ export default function App() {
           50% { background-position:100% 50% }
           100% { background-position:0% 50% }
         }
-        .header { padding:40px 20px; text-align:center; z-index:2; position:relative; }
-        .footer { text-align:center; margin:40px 0; font-size:1.2rem; color:#fff; text-shadow:0 0 6px #ff69b4; }
+        .header { padding:20px; text-align:center; z-index:2; position:relative; }
+        .footer { text-align:center; margin:20px 10px; font-size:1rem; color:#fff; text-shadow:0 0 6px #ff69b4; }
 
-        /* 📱 Mobile first */
+        /* 📱 Phones */
         @media (max-width: 480px) {
-          h1 { font-size: 1.5rem !important; }
-          .footer { font-size: 1rem; }
+          h1 { font-size: 1.3rem !important; }
+          .footer { font-size: 0.9rem; }
+          img { height: auto !important; max-height: 200px; }
         }
+
+        /* 📱 Tablets */
         @media (max-width: 768px) {
-          h1 { font-size: 1.8rem !important; }
+          h1 { font-size: 1.6rem !important; }
+          .footer { font-size: 1rem; }
+          img { max-height: 220px; }
         }
+
+        /* 💻 Desktop */
         @media (min-width: 1024px) {
-          h1 { font-size: 2.8rem !important; }
+          h1 { font-size: 2.5rem !important; }
+          .footer { font-size: 1.2rem; }
         }
       `}</style>
     </div>
@@ -178,41 +190,41 @@ const styles = {
   page: {
     background: "linear-gradient(135deg, #fbc2eb, #a6c1ee)",
     minHeight: "100vh",
-    paddingBottom: "40px",
+    paddingBottom: "20px",
   },
   heading: {
     textAlign: "center",
     fontSize: "2rem",
-    padding: "0px",
     color: "#f027a3ff",
     fontWeight: "bold",
     fontFamily: "'Dancing Script', cursive",
     textShadow: "0 3px 8px rgba(0,0,0,0.3)",
+    margin: "0",
   },
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
-    gap: "15px",
-    padding: "15px",
+    gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
+    gap: "12px",
+    padding: "12px",
   },
   card: {
-    borderRadius: "12px",
-    padding: "10px",
-    boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+    borderRadius: "10px",
+    padding: "8px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.25)",
     cursor: "pointer",
-    transition: "all 0.4s ease",
+    transition: "all 0.3s ease",
     textAlign: "center",
   },
   image: {
     width: "100%",
-    height: "250px",
+    height: "200px",
     objectFit: "cover",
     borderRadius: "8px",
-    boxShadow: "0 5px 12px rgba(0,0,0,0.2)",
+    boxShadow: "0 3px 8px rgba(0,0,0,0.2)",
   },
   caption: {
-    marginTop: "8px",
-    fontSize: "0.9rem",
+    marginTop: "6px",
+    fontSize: "0.8rem",
     color: "#333",
     fontStyle: "italic",
     fontFamily: "'Indie Flower', cursive",
@@ -221,8 +233,8 @@ const styles = {
     position: "fixed",
     top: 0,
     left: 0,
-    width: "100vw",
-    height: "100vh",
+    width: "100%",
+    height: "100%",
     background: "rgba(0,0,0,0.8)",
     display: "flex",
     flexDirection: "column",
@@ -233,17 +245,17 @@ const styles = {
   },
   lightboxImg: {
     width: "100%",
-    maxWidth: "600px",
-    maxHeight: "70%",
+    maxWidth: "500px",
+    maxHeight: "65%",
     borderRadius: "12px",
     boxShadow: "0 6px 20px rgba(0,0,0,0.5)",
     objectFit: "contain",
   },
   lightboxTitle: {
     color: "#fff",
-    marginTop: "12px",
+    marginTop: "10px",
     fontFamily: "'Dancing Script', cursive",
-    fontSize: "1.5rem",
+    fontSize: "1.2rem",
     textAlign: "center",
     padding: "0 10px",
   },
@@ -251,16 +263,17 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: "20px",
+    marginTop: "15px",
   },
   button: {
-    padding: "12px 24px",
-    fontSize: "1.2rem",
-    borderRadius: "12px",
+    padding: "10px 18px",
+    fontSize: "1rem",
+    borderRadius: "10px",
     border: "none",
     cursor: "pointer",
     background: "linear-gradient(90deg, #ff0080, #ff8c00, #ffd700)",
     color: "#fff",
-    boxShadow: "0 0 15px #ff69b4, 0 0 30px #ffa07a",
+    boxShadow: "0 0 10px #ff69b4, 0 0 20px #ffa07a",
   },
 };
+
