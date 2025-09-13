@@ -2,7 +2,7 @@ import React from "react";
 import Confetti from "react-confetti";
 import { motion } from "framer-motion";
 // 🎥 Import your video
-import birthdayVideo from "./assets/khushaboo.mp4";
+import birthdayVideo from "./assets/pooji.mp4";
 
 export default function App() {
   return (
@@ -17,7 +17,7 @@ export default function App() {
         transition={{ duration: 1 }}
         className="text-5xl md:text-7xl mt-15 font-bold text-center text-purple-500 drop-shadow-lg mb-10"
       >
-        My Gigi 🧿💖✨
+      Dear Jiji🧿💖✨
       </motion.h1>
 
       {/* 💌 Message Card */}
