@@ -6,7 +6,7 @@ import birthdayVideo from "./assets/pooji.mp4";
 
 export default function App() {
   return (
-    <div className="relative min-h-screen bg-gradient-to-r from-purple-900 via-black to-purple-700 text-white flex flex-col items-center justify-center overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-r from-purple-900 via-black to-purple-700 text-white flex flex-col items-center justify-center overflow-hidden px-4">
       {/* 🎆 Confetti */}
       <Confetti width={window.innerWidth} height={window.innerHeight} />
 
@@ -15,9 +15,9 @@ export default function App() {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1 }}
-        className="text-5xl md:text-7xl mt-15 font-bold text-center text-purple-500 drop-shadow-lg mb-10"
+        className="text-3xl sm:text-4xl md:text-6xl font-bold text-center text-purple-400 drop-shadow-lg mb-6"
       >
-      Dear Jiji🧿💖✨
+        Dear Jiji 🧿💖✨
       </motion.h1>
 
       {/* 💌 Message Card */}
@@ -25,9 +25,9 @@ export default function App() {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 1 }}
-        className="bg-black bg-opacity-60 border-2 border-purple-400 rounded-2xl p-6 max-w-lg text-center shadow-lg"
+        className="bg-black bg-opacity-60 border-2 border-purple-400 rounded-2xl p-4 sm:p-6 max-w-md w-full text-center shadow-lg mb-6"
       >
-        <p className="text-xl leading-relaxed">
+        <p className="text-base sm:text-lg md:text-xl leading-relaxed">
           Wishing you a day filled with love, laughter, and happiness.  
           May all your dreams come true today and always! ❤️💜
         </p>
@@ -38,11 +38,11 @@ export default function App() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}
-        className="mt-10 mb-15 w-100  md:w-[450px] md:h-[900px] rounded-2xl overflow-hidden shadow-2xl border-4 border-purple-500"
+        className="w-full max-w-[320px] sm:max-w-[400px] md:max-w-[450px] rounded-2xl overflow-hidden shadow-2xl border-4 border-purple-500"
       >
         <video
           src={birthdayVideo}
-          className="w-full h-full object-cover"
+          className="w-full h-auto object-cover"
           autoPlay
           loop
           muted
