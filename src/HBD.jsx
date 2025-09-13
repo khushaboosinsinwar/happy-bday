@@ -71,8 +71,8 @@ export default function App() {
   { src: lehega, title: "🧿💙🌺" },
   { src: saree, title: "Saree 🥰🌸" },
   { src: sarees, title: "Saree Pose 😍" },
-  { src: withflower, title: "With Flower 🌹✨" },
-  { src: nowok, title: "Bindi 🌸💜" },
+  { src: withflower, title: "✨✨" },
+  { src: nowok, title: " 🌸💜" },
   { src: balloImg, title: "💗💗" },
   { src: winter, title: "Winter Mood ❄️🧣" },
   { src: winterpurple, title: "💜💜" },
@@ -86,12 +86,12 @@ export default function App() {
   { src: roseImg, title: "🌹 Rose Beauty 💕" },
   { src: jhumkaImg, title: "✨ Jhumka Look ✨ " },
   { src: shitdown, title: "💓💓🌸" },
-  { src: cutemsgImg, title: "💌🥰" },
+  { src: cutemsgImg, title: "🌸💞" },
   { src: wisheImg, title: "👻 Spooky Bhoot ✨" },
   { src: goImg, title: "💓💓🌸" },
   { src: temple, title: "🛕 Ujjain Trip 🙏✨" },
   { src: black, title: "🖤🖤" },
-  { src: style, title: "Beauty 🌸" },
+  { src: style, title: "💞🌺" },
   { src: red, title: "❤️❤️" },
   { src: bhagtain, title: "Culture Time 🙏🕉️" },
 ];
@@ -161,13 +161,14 @@ export default function App() {
             boxShadow: "0 0 15px #ff69b4, 0 0 30px #ffa07a",
           }}
         >
-          👉 Go to Collage 🎨
+
+click me 💕
         </button>
       </div>
 
       <footer className="footer">🌸 Made with ❤️ just for you Ma’am 🌸</footer>
       {/* Inline CSS for responsiveness */}
-      <style>{` body {
+      <style>{` body { 
           margin:0;
           font-family:'Dancing Script', cursive;
           background: linear-gradient(-45deg,#ffb6c1,#dda0dd,#87ceeb,#b5fffc);
